@@ -339,6 +339,10 @@ button:hover {
     width: 55rem;
     margin: 1rem;
   }
+  .icon-wrapper {
+    margin: 2rem;
+    height: 17rem;
+  }
 }
 
 @media only screen and (min-width: 1101px) and (max-width: 1400px) {

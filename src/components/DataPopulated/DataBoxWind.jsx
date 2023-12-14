@@ -2,14 +2,14 @@ import { useWeatherContext } from "../../contexts/WeatherDataContext";
 import WindGadget from "../WindGadget";
 
 function DataBoxWind() {
-  const { windDirection, windGust, windSpeed } = useWeatherContext();
+  const { windDirection, windGust, windSpeed, windRaw } = useWeatherContext();
 
   return (
     <div className="box">
       <div className="data-div">
         <p className="wind-direction-degrees italic">wind direction:</p>
         <p className="wind-direction-degrees-output output ">
-          <span className="additional-info-output output">{windDirection}</span>
+          <span className="additional-info-output output">{`${windRaw}°(${windDirection})`}</span>
         </p>
       </div>
       <div className="data-div">

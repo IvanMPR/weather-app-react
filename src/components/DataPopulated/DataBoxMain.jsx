@@ -1,8 +1,8 @@
 import { useWeatherContext } from "../../contexts/WeatherDataContext";
 
 function DataBoxMain() {
-  const { weatherData, status, currentDate, currentTime } = useWeatherContext();
-  console.log(weatherData, status, "from data box main");
+  const { weatherData, currentDate, currentTime } = useWeatherContext();
+
   return (
     <div className="box">
       <p className="location">
