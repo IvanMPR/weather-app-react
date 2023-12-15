@@ -55,3 +55,9 @@ export const translateWindDegreesToDirection = function (degVal) {
     ? "NW"
     : "N";
 };
+// Get geolocation as Promise
+export const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};

@@ -5,7 +5,7 @@ function DataBoxMain() {
 
   return (
     <div className="box">
-      <p className="location blank blank-short"></p>
+      <p className="location">{"Something went wrong!"}</p>
       <div className="icon-wrapper">
         <img src="/icon-placeholder.png" alt="icon" className="weather-icons" />
       </div>

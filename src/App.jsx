@@ -18,7 +18,9 @@ function App() {
       <Title />
       <Wrapper>
         {status === "idle" && <DataBlank />}
-        {status === "loading" && <DataSkeleton />}
+        {(status === "loading" || status === "retrieving geolocation") && (
+          <DataSkeleton />
+        )}
         {status === "finished" && <DataPopulated />}
         {status === "error" && <DataError />}
       </Wrapper>

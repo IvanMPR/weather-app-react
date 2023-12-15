@@ -4,6 +4,7 @@ import {
   showTime,
   translateWindDegreesToDirection,
   displayWindGust,
+  getPosition,
 } from "../helpers";
 
 const API_KEY = "25f76a4f0875a7268665e799574424e1";
@@ -25,8 +26,37 @@ function WeatherProvider({ children }) {
   const windDirectionDegrees = weatherData?.wind?.deg;
   const windGust = displayWindGust(weatherData);
 
+  async function apiCallReverseGeocoding(e) {
+    e.preventDefault();
+    try {
+      setStatus("retrieving geolocation");
+      const getCoords = await getPosition();
+      const { latitude, longitude } = getCoords.coords;
+      const url = `https://geocodeapi.p.rapidapi.com/GetNearestCities?latitude=${latitude}2&longitude=${longitude}&range=0`;
+      const request = await fetch(url, {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "geocodeapi.p.rapidapi.com",
+          "x-rapidapi-key":
+            "667440b8bdmsha4bd6168888fe4dp18db5ejsn6b8b40686a77",
+        },
+      });
+
+      if (!request.ok) {
+        setStatus("error");
+        throw new Error("Failed to retrieve current location !");
+      }
+      const response = await request.json();
+      // Call to OpenWeatherMap API with reversed geocode location
+      setCity(response[0].City);
+    } catch (err) {
+      setError(err.message);
+      setStatus("error");
+    }
+  }
+
   useEffect(() => {
-    let isMounted = true; // add this line
+    let isMounted = true;
 
     async function apiCallOpenWeather() {
       try {
@@ -35,7 +65,7 @@ function WeatherProvider({ children }) {
         const request = await fetch(url);
 
         if (!request.ok) {
-          throw new Error("Country/city not found !");
+          throw new Error("Country / city not found !");
         }
         const response = await request.json();
         if (isMounted) {
@@ -61,7 +91,7 @@ function WeatherProvider({ children }) {
 
     return () => {
       isMounted = false;
-    }; // clean up function
+    };
   }, [city]);
 
   return (
@@ -80,6 +110,7 @@ function WeatherProvider({ children }) {
         windRaw,
         error,
         setError,
+        apiCallReverseGeocoding,
       }}
     >
       {children}
@@ -96,32 +127,3 @@ function useWeatherContext() {
 }
 
 export { WeatherProvider, useWeatherContext };
-// useEffect(() => {
-//   async function apiCallOpenWeather() {
-//     try {
-//       setStatus("loading");
-
-//       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`;
-//       const request = await fetch(url);
-
-//       if (!request.ok) {
-//         setStatus("error");
-//         throw new Error("Country/city not found !");
-//       }
-//       const response = await request.json();
-//       setWeatherData(response);
-//     } catch (err) {
-//       console.error(err);
-//       setError(err.message);
-//     } finally {
-//       error ? setStatus("error") : setStatus("finished");
-//     }
-//   }
-
-//   if (city.length < 3) {
-//     setWeatherData(null);
-//     return;
-//   }
-
-//   apiCallOpenWeather();
-// }, [city, error]);
