@@ -1,19 +1,15 @@
 import { useEffect } from "react";
 import { useWeatherContext } from "../contexts/WeatherDataContext";
-
-// Display needle in the direction of the wind
-const windDirectionGadget = function (degree, el) {
-  el.style.transform = `rotate(${degree}deg)`;
-  el.style.transformOrigin = "center";
-};
+import { windDirectionGadget } from "../helpers";
 
 function WindNeedle() {
-  // const ref = useRef(null);
   const { windDirectionDegrees, status } = useWeatherContext();
+
   useEffect(() => {
     const needle = document.getElementById("needle");
     windDirectionGadget(windDirectionDegrees, needle);
   }, [windDirectionDegrees]);
+
   return (
     <g id="needle" className={status === "idle" ? "rotate" : ""}>
       <path

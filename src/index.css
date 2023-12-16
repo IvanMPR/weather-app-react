@@ -23,8 +23,6 @@ body {
   background: var(--main-background);
   overflow-x: hidden;
   color: var(--text-primary-color);
-  /* display: flex; */
-  /* flex-direction: column; */
   position: relative;
 }
 
@@ -48,7 +46,6 @@ form {
   justify-content: center;
   flex-direction: column;
   margin-top: 2rem;
-  width: 100%;
 }
 input {
   padding: 1rem;
@@ -173,10 +170,10 @@ button:hover {
 }
 
 .box {
-  width: 50rem;
+  width: 45rem;
   min-height: 50rem;
   border: 1px solid var(--border-color);
-  margin: 3rem;
+  margin: 1rem;
   padding: 2rem;
 }
 .box-wrapper {
@@ -314,7 +311,8 @@ button:hover {
 
   form {
     flex-direction: column;
-    margin-top: 10rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
   }
   button {
     margin-top: 1rem;
@@ -344,6 +342,9 @@ button:hover {
 @media only screen and (min-width: 1101px) and (max-width: 1400px) {
   html {
     font-size: 50%;
+  }
+  .box {
+    width: 40rem;
   }
 }
 /* *** Animations *** */

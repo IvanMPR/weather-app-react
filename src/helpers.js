@@ -61,3 +61,9 @@ export const getPosition = function () {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
+
+// Display needle in the direction of the wind
+export const windDirectionGadget = function (degree, el) {
+  el.style.transform = `rotate(${degree}deg)`;
+  el.style.transformOrigin = "center";
+};
