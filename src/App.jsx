@@ -9,6 +9,7 @@ import DataBlank from "./components/DataBlank/DataBlank";
 import DataSkeleton from "./components/DataSkeletonLoading/DataSkeleton";
 import DataPopulated from "./components/DataPopulated/DataPopulated";
 import DataError from "./components/DataError/DataError";
+import BoxWrapper from "./components/BoxWrapper";
 
 function App() {
   const { status } = useWeatherContext();
@@ -16,15 +17,18 @@ function App() {
   return (
     <>
       <Title />
+      {/* <Container></Container> */}
       <Wrapper>
-        {status === "idle" && <DataBlank />}
-        {(status === "loading" || status === "retrieving geolocation") && (
-          <DataSkeleton />
-        )}
-        {status === "finished" && <DataPopulated />}
-        {status === "error" && <DataError />}
+        <BoxWrapper>
+          {status === "idle" && <DataBlank />}
+          {(status === "loading" || status === "retrieving geolocation") && (
+            <DataSkeleton />
+          )}
+          {status === "finished" && <DataPopulated />}
+          {status === "error" && <DataError />}
+        </BoxWrapper>
+        <Form />
       </Wrapper>
-      <Form />
     </>
   );
 }

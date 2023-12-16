@@ -23,14 +23,14 @@ body {
   background: var(--main-background);
   overflow-x: hidden;
   color: var(--text-primary-color);
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   position: relative;
 }
 
 h1 {
   font-size: 3.3rem;
-  margin: auto;
+  margin: 1rem auto;
 }
 
 h2 {
@@ -166,6 +166,7 @@ button:hover {
 
 .app-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   margin-top: 6rem;
@@ -178,6 +179,12 @@ button:hover {
   margin: 3rem;
   padding: 2rem;
 }
+.box-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .icon-wrapper {
   margin: 1rem;
   height: 16rem;
@@ -233,14 +240,7 @@ button:hover {
   html {
     font-size: 45%;
   }
-  body {
-    padding: 0;
-    overflow-x: hidden;
-    flex-direction: column-reverse;
-  }
-  h1 {
-    display: none;
-  }
+
   input,
   button {
     width: 40rem;
@@ -251,20 +251,18 @@ button:hover {
 
   form {
     flex-direction: column;
-    margin-top: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
   }
-  button {
+
+  .app-wrapper {
+    flex-direction: column-reverse;
     margin-top: 1rem;
   }
-  input {
-    margin-bottom: 0;
-  }
-  .app-wrapper {
+  .box-wrapper {
     flex-direction: column;
-    margin-top: 5rem;
   }
   .box {
-    padding: 0 3rem;
     margin: 0;
     border: none;
   }
@@ -274,23 +272,20 @@ button:hover {
   html {
     font-size: 55%;
   }
-  body {
-    padding: 0;
-    flex-direction: column-reverse;
-    overflow-x: hidden;
-  }
+
   input,
   button {
     width: 40rem;
   }
   h1 {
-    top: 3%;
+    margin-top: 2rem;
   }
   p {
     margin: 1.4rem;
   }
   form {
-    margin-top: 10rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
   }
   button {
     margin-top: 1rem;
@@ -299,14 +294,16 @@ button:hover {
     margin-bottom: 0;
   }
   .app-wrapper {
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin-top: 5rem;
+  }
+  .box-wrapper {
+    flex-direction: column;
   }
 
   .box {
     padding: 0 3rem;
-    border: none;
-    margin: 0;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -314,12 +311,7 @@ button:hover {
   html {
     font-size: 62.5%;
   }
-  body {
-    flex-direction: column-reverse;
-  }
-  h1 {
-    top: 3%;
-  }
+
   form {
     flex-direction: column;
     margin-top: 10rem;
@@ -333,8 +325,11 @@ button:hover {
     margin-bottom: 0;
   }
   .app-wrapper {
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin-top: 5rem;
+  }
+  .box-wrapper {
+    flex-direction: column;
   }
   .box {
     width: 55rem;
