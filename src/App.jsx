@@ -17,7 +17,6 @@ function App() {
   return (
     <>
       <Title />
-      {/* <Container></Container> */}
       <Wrapper>
         <BoxWrapper>
           {status === "idle" && <DataBlank />}

@@ -71,13 +71,13 @@ function WeatherProvider({ children }) {
         if (isMounted) {
           // check if component is still mounted
           setWeatherData(response);
-          setStatus("finished"); // set status to "finished" here
+          setStatus("finished"); // set status to "finished"
         }
       } catch (err) {
         if (isMounted) {
           // check if component is still mounted
           setError(err.message);
-          setStatus("error"); // set status to "error" here
+          setStatus("error"); // set status to "error"
         }
       }
     }
