@@ -7,7 +7,11 @@ function DataBoxMain() {
     <div className="box">
       <p className="location">{"Something went wrong!"}</p>
       <div className="icon-wrapper">
-        <img src="/icon-placeholder.png" alt="icon" className="weather-icons" />
+        <img
+          src="/weather-app-react/icon-placeholder.png"
+          alt="icon"
+          className="weather-icons"
+        />
       </div>
       <p className="description output italic">{error}</p>
       <p className="temperature large blank blank-thick"></p>
